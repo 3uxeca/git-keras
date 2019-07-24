@@ -3,14 +3,13 @@ import numpy as np
 
 # x = np.array(range(1,101))
 # y = np.array(range(1,101))
-x = np.array([range(100), range(311,411), range(100)]) # 3행 100열 / dim=100 / shape(100,)
-y = np.array([range(501,601)])
-# x = np.array([range(100), range(311,411)]).reshape(100,3) # 100행 3열 / dim=3 / shape(3,)
-# y = np.array([range(501,601), range(711, 811)]).reshape(100,3)
+x = np.array([range(100), range(311,411), range(211,311)]) # 100행 3열 / dim=3 / shape(3,)
+y = np.array([range(501,601), range(711, 811), range(211,311)])
+# x = np.array([range(100), range(311,411)]).reshape(100,2) # 100행 3열 / dim=3 / shape(3,)
+# y = np.array([range(501,601), range(711, 811)]).reshape(100,2)
 
 print(x.shape)
 print(y.shape)
-
 
 #ValueError: Error when checking input: expected dense_1_input to have shape (3,) but got array with shape (100,) 행렬전치해라.
 x = np.transpose(x)
@@ -18,7 +17,6 @@ y = np.transpose(y)
 
 print(x.shape)
 print(y.shape)
-
 
 from sklearn.model_selection import train_test_split # 사이킷런의 분할기능(행에맞춰분할)
 x_train, x_test, y_train, y_test = train_test_split(
@@ -31,17 +29,24 @@ x_val, x_test, y_val, y_test = train_test_split( # train 60 val 20 test 20 으�
 print(x_test.shape)
 
 #2. 모델구성
-from keras.models import Sequential
-from keras.layers import Dense 
-model = Sequential()
+from keras.models import Sequential, Model
+from keras.layers import Dense, Input 
+# model = Sequential()
 
-model.add(Dense(5, input_dim = 3, activation = 'relu'))
-# model.add(Dense(151, input_shape = (3, ), activation = 'relu'))
-model.add(Dense(6))
-model.add(Dense(6))
-model.add(Dense(1)) # dim =>2나 3으로 바뀌어도 y값(output)에 따라 값 조절
+# model.add(Dense(5, input_dim = 3, activation = 'relu'))
+# # model.add(Dense(151, input_shape = (2, ), activation = 'relu'))
+# model.add(Dense(6))
+# model.add(Dense(6))
+# model.add(Dense(3)) # dim =>2로 바뀌면서 output도 2로 변경
 
 
+input1 = Input(shape=(3,))
+dense1 = Dense(5, activation = 'relu')(input1) # activation함수는 원래 디폴트가 있다!
+dense2 = Dense(6)(dense1)
+dense3 = Dense(6)(dense2)
+dense4 = Dense(3)(dense3)
+
+model = Model(inputs = input1, outputs = dense4)
 model.summary()
 
 #3. 훈련
@@ -57,7 +62,7 @@ print("acc : ", acc)
 
 y_predict = model.predict(x_test)
 print(y_predict)
-'''
+
 # RMSE 구하기
 from sklearn.metrics import mean_squared_error
 def RMSE(y_test, y_predict): # y_test, y_predict의 차이를 비교하기 위한 함수
@@ -74,4 +79,3 @@ print("RMSE : ", RMSE(y_test, y_predict))
 from sklearn.metrics import r2_score
 r2_y_predict = r2_score(y_test, y_predict)
 print("R2 : ", r2_y_predict)
-'''
