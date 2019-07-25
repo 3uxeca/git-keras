@@ -5,8 +5,6 @@ import numpy as np
 # y = np.array(range(1,101))
 x = np.array([range(100), range(311,411), range(100)]) # 100행 3열 / dim=3 / shape(3,)
 y = np.array([range(501,601), range(711, 811), range(100)])
-# x = np.array([range(100), range(311,411)]).reshape(100,2) # 100행 3열 / dim=3 / shape(3,)
-# y = np.array([range(501,601), range(711, 811)]).reshape(100,2)
 
 print(x.shape)
 print(y.shape)
@@ -31,23 +29,41 @@ print(x_test.shape)
 #2. 모델구성
 from keras.models import Sequential
 from keras.layers import Dense 
+from keras.callbacks import EarlyStopping
 model = Sequential()
 
-model.add(Dense(5, input_dim = 3, activation = 'relu'))
+model.add(Dense(10, input_dim = 3, activation = 'relu'))
 # model.add(Dense(151, input_shape = (2, ), activation = 'relu'))
-model.add(Dense(6))
-model.add(Dense(6))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
+model.add(Dense(10))
 model.add(Dense(3)) # dim =>2로 바뀌면서 output도 2로 변경
 
 
-model.summary()
+# model.summary()
+
+# monitor = 'loss'
+# 'val_loss'   # 'val_acc'  >>> 얘네 쓰려면 꼭 model.fit에 validaion_data 필요
 
 #3. 훈련
-# model.compile(loss = 'mse', optimizer = 'adam', metrics = ['accuracy'])
-model.compile(loss = 'mse', optimizer = 'adam', metrics = ['mse'])
-model.fit(x_train, y_train, epochs=100, batch_size = 1,
-          validation_data= (x_val, y_val)) # 스스로 학습하는 동시에 검증하라.(훈련이 더 잘됌)
-# model.fit(x_train, y_train, epochs=100)
+model.compile(loss = 'mse', optimizer = 'adam', metrics = ['accuracy'])
+early_stopping = EarlyStopping(monitor='val_acc', patience=30, mode='auto')
+model.fit(x, y, epochs=10000, verbose=1, validation_data=(x_val,y_val),
+          callbacks=[early_stopping]) 
 
 #4. 평가 예측
 loss, acc = model.evaluate(x_test, y_test, batch_size=1)
