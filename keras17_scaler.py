@@ -30,7 +30,7 @@ print(y_train.shape)        # (6, ) reshape필요
 print(y_train)
 
 
-'''
+
 scaler = StandardScaler() # StandardScaler 클래스 변수에 대입 @@@@@@@@@@얘랑 .fit은 한번만 해@@@@@@@@@@@@
 # scaler = MinMaxScaler()
 scaler.fit(x_train) # x 데이터를 standardscale 해라(연산할 데이터만! y는 하지 않는다.) 
@@ -94,4 +94,3 @@ y_predict = model.predict(x_test_scaled)
 print('loss : ', loss)
 print('acc : ', acc)
 print('y_predict(x_test) : \n', y_predict)
-'''
