@@ -40,7 +40,7 @@ print(y_test.shape)     #(4, )
 #2. 모델 구성
 model = Sequential()
 
-model.add(LSTM(32, input_shape=(4,1), return_sequences=True))
+model.add(LSTM(10, input_shape=(4,1), return_sequences=True))
 model.add(LSTM(10, return_sequences=True)) # return_sequences의 역할: 두 LSTM을 연결하는 다리
 model.add(LSTM(10, return_sequences=True)) # return_sequences의 역할: 두 LSTM을 연결하는 다리
 model.add(LSTM(10, return_sequences=True)) # return_sequences의 역할: 두 LSTM을 연결하는 다리

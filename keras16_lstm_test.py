@@ -2,7 +2,7 @@ import numpy as np
 from keras.models import Sequential 
 from keras.layers import Dense, LSTM
 
-a = np.array(range(1,11))
+a = np.array(range(11,21))
 
 
 size = 5
@@ -46,18 +46,22 @@ model.add(LSTM(10, input_shape=(4,1), return_sequences=True))
 # model.add(LSTM(10, return_sequences=True)) # return_sequences의 역할: 두 LSTM을 연결하는 다리
 model.add(LSTM(10)) # output값을 보여줘야하므로 Dense층과 연결 필요
 
-model.add(Dense(45, activation='relu'))
-model.add(Dense(15, activation='relu'))
+model.add(Dense(300, activation='relu'))
+model.add(Dense(100, activation='relu'))
+model.add(Dense(300, activation='relu'))
+model.add(Dense(100, activation='relu'))
+model.add(Dense(300, activation='relu'))
 model.add(Dense(1))
 
 model.summary()
 
 #3. 훈련
-model.compile(loss='mse', optimizer='adam', metrics=['mse'])
+# model.compile(loss='mse', optimizer='adam', metrics=['mse'])
+model.compile(loss='mse', optimizer='adam', metrics=['accuracy'])
 
 from keras.callbacks import EarlyStopping
 early_stopping = EarlyStopping(monitor='loss', patience=100, mode='auto')
-model.fit(x_train, y_train, epochs=500, batch_size=1, verbose=1,
+model.fit(x_train, y_train, epochs=300, batch_size=300, verbose=3,
           callbacks=[early_stopping]  )
 
 #4. 평가 예측

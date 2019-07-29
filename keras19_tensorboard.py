@@ -25,6 +25,10 @@ x_val, x_test, y_val, y_test = train_test_split( # train 60 val 20 test 20 으�
  )                                                # 40으로 나누어진 test를 다시 반으로 분할\
 
 print(x_test.shape)
+print(len(x_train), "train +",len(x_test),"test")
+print(len(y_train), "train +",len(y_test),"test")
+print(len(x_val), "x_val +",len(y_val),"y_val")
+
 
 #2. 모델구성
 from keras.models import Sequential
@@ -60,7 +64,7 @@ early_stopping = EarlyStopping(monitor='loss', patience=100, mode='auto')
 
 model.fit(x_train, y_train, epochs=100, batch_size = 100, verbose=3,
           validation_data= (x_val, y_val), # 스스로 학습하는 동시에 검증하라.(훈련이 더 잘됌)
-          callbacks=[early_stopping, tb_hist]) 
+          callbacks=[early_stopping, tb_hist])  # tb_hist: 텐서보드 접근하는 callbacks 함수
 
 #4. 평가 예측
 loss, acc = model.evaluate(x_test, y_test, batch_size=1)
