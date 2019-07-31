@@ -60,7 +60,7 @@ print(history.history.keys()) # 위의 history라는 변수의 반환값 확인 
 #colab GPU환경에서 구동
 import matplotlib.pyplot as plt
 
-'''
+
 plt.plot(history.history['acc'])
 plt.plot(history.history['val_acc'])
 plt.title('model accuracy')
@@ -76,7 +76,7 @@ plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper right')
 plt.show()
-'''
+
 
 plt.plot(history.history['loss'])
 plt.plot(history.history['val_loss'])
