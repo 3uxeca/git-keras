@@ -18,14 +18,14 @@ x = scaler.transform(x) # 모양을 변형해주면 끝! 좀 더 원활한 데�
 print(x)
 
 
-'''
+
 print("x.shape: ", x.shape)
 print("y.shape: ", y.shape) # (4,) 결과값의 갯수: 4개
 
 x = x.reshape((x.shape[0], x.shape[1], 1)) #LSTM에 넣기 위한 모양 작업(데이터갯수변함x)
 
 print("x.shape: ", x.shape)
-
+'''
 #2. 모델 구성  # LSTM의 기본적인 모양 input_shape(/행무시/열,몇개씩자를거야)
 model = Sequential()
 model.add(LSTM(500, activation = 'relu', input_shape=(3,1))) # 행 무시, dim = 3, 1개씩 잘라서 수행

@@ -1,0 +1,183 @@
+model.add(Conv2D(30, kernel_size=(3,3), input_shape=(28, 28, 1), activation='relu'))
+model.add(Conv2D(30, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=2))
+model.add(Dropout(0.25))
+model.add(Flatten())
+model.add(Dense(50, activation='relu'))
+                #  ,kernel_regularizer = regularizers.l2(0.01)))
+model.add(BatchNormalization())
+model.add(Dense(50, activation='relu'))
+model.add(Dropout(0.25))
+
+patience=100
+
+epochs=300, batch_size=200, verbose=2,
+
+
+ Test Accuracy: 0.9033
+
+
+-------------------------------------------------------------------------------------------------------
+model.add(Conv2D(30, kernel_size=(3,3), input_shape=(28, 28, 1), activation='relu'))
+model.add(Conv2D(30, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=3))  # pool_size 조정
+model.add(Dropout(0.25))
+model.add(Flatten())
+model.add(Dense(50, activation='relu'))
+                #  ,kernel_regularizer = regularizers.l2(0.01)))
+model.add(BatchNormalization())
+model.add(Dense(50, activation='relu'))
+model.add(Dropout(0.25))
+
+patience=100
+
+epochs=500, batch_size=200, verbose=2
+
+ Test Accuracy: 0.9200
+
+-------------------------------------------------------------------------------------------------------
+
+model.add(Conv2D(30, kernel_size=(3,3), input_shape=(28, 28, 1), activation='relu'))
+model.add(Conv2D(30, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=4))
+model.add(Dropout(0.25))
+model.add(Flatten())
+model.add(Dense(50, activation='relu'))
+                #  ,kernel_regularizer = regularizers.l2(0.01)))
+model.add(BatchNormalization())
+model.add(Dense(50, activation='relu'))
+model.add(Dropout(0.25))
+
+patience=100
+
+epochs=500, batch_size=200, verbose=2,
+
+ Test Accuracy: 0.9167
+
+
+-----------------------------------------------------------------------------------------------------
+model.add(Conv2D(30, kernel_size=(3,3), input_shape=(28, 28, 1), activation='relu'))
+model.add(Conv2D(30, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=5))
+model.add(Dropout(0.25))
+model.add(Flatten())
+model.add(Dense(60, activation='relu'))
+                #  ,kernel_regularizer = regularizers.l2(0.01)))
+model.add(BatchNormalization())
+model.add(Dense(60, activation='relu'))
+model.add(Dropout(0.25))
+
+patience=100
+
+epochs=500, batch_size=200, verbose=2,
+
+ Test Accuracy: 0.9333
+
+-----------------------------------------------------------------------------------------------------
+model.add(Conv2D(30, kernel_size=(3,3), input_shape=(28, 28, 1), activation='relu'))
+model.add(Conv2D(30, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=5))
+model.add(Dropout(0.25))
+model.add(Flatten())
+model.add(Dense(60, activation='relu'))
+                #  ,kernel_regularizer = regularizers.l2(0.01)))
+model.add(BatchNormalization())
+model.add(Dense(60, activation='relu'))
+model.add(Dropout(0.25))
+
+patience=60 #patience 조정
+
+epochs=600, batch_size=200, verbose=2
+
+ Test Accuracy: 0.9367
+
+-----------------------------------------------------------------------------------------------------
+model.add(Conv2D(30, kernel_size=(3,3), input_shape=(28, 28, 1), activation='relu'))
+model.add(Conv2D(30, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=5))
+model.add(Dropout(0.25))
+model.add(Flatten())
+model.add(Dense(60, activation='relu'))
+                #  ,kernel_regularizer = regularizers.l2(0.01)))
+model.add(BatchNormalization())
+model.add(Dense(60, activation='relu'))
+model.add(Dropout(0.25))
+
+patience=60
+
+epochs=600, batch_size=300, verbose=2, #batch_size 조정
+
+Test Accuracy: 0.9200
+
+-----------------------------------------------------------------------------------------------------
+model.add(Conv2D(40, kernel_size=(3,3), input_shape=(28, 28, 1), activation='relu'))
+model.add(Conv2D(40, (3, 3), activation='relu'))      # Conv2D output조정
+model.add(MaxPooling2D(pool_size=5))
+model.add(Dropout(0.25))
+model.add(Flatten())
+model.add(Dense(60, activation='relu'))
+                #  ,kernel_regularizer = regularizers.l2(0.01)))
+model.add(BatchNormalization())
+model.add(Dense(60, activation='relu'))
+model.add(Dropout(0.25))
+
+patience=60
+
+epochs=500, batch_size=300, verbose=2
+
+ Test Accuracy: 0.9333
+
+-----------------------------------------------------------------------------------------------------
+model.add(Conv2D(40, kernel_size=(3,3), input_shape=(28, 28, 1), activation='relu'))
+model.add(Conv2D(40, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=5))
+model.add(Dropout(0.25))
+model.add(Flatten())
+model.add(Dense(60, activation='relu'))
+                #  ,kernel_regularizer = regularizers.l2(0.01)))
+model.add(BatchNormalization())
+model.add(Dense(60, activation='relu'))
+model.add(Dropout(0.25))
+
+patience=60
+
+epochs=700, batch_size=300, verbose=2,
+
+ Test Accuracy: 0.9400
+
+-----------------------------------------------------------------------------------------------------
+model.add(Conv2D(40, kernel_size=(3,3), input_shape=(28, 28, 1), activation='relu'))
+model.add(Conv2D(40, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=5))
+model.add(Dropout(0.25))
+model.add(Flatten())
+model.add(Dense(60, activation='relu'))
+                #  ,kernel_regularizer = regularizers.l2(0.01)))
+model.add(BatchNormalization())
+model.add(Dense(60, activation='relu'))
+model.add(Dropout(0.25))
+
+patience=70
+
+epochs=700, batch_size=300, verbose=2,
+
+ Test Accuracy: 0.9467
+
+-----------------------------------------------------------------------------------------------------
+
+model.add(Conv2D(40, kernel_size=(3,3), input_shape=(28, 28, 1), activation='relu'))
+model.add(Conv2D(40, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=5))
+model.add(Dropout(0.25))
+model.add(Flatten())
+model.add(Dense(60, activation='relu'))
+                #  ,kernel_regularizer = regularizers.l2(0.01)))
+model.add(BatchNormalization())
+model.add(Dense(60, activation='relu'))
+model.add(Dropout(0.25))
+
+patience=70
+
+epochs=700, batch_size=300, verbose=2,
+
+ Test Accuracy: 0.9241
