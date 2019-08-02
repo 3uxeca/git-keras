@@ -41,13 +41,6 @@ def build_model():
     model.add(layers.Dense(64, activation='relu',
                             input_shape=(train_data.shape[1],)))
     model.add(layers.Dense(64, activation='relu'))
-    model.add(layers.Dense(64, activation='relu'))
-    model.add(layers.Dense(64, activation='relu'))
-    model.add(layers.Dense(64, activation='relu'))
-    model.add(layers.Dense(64, activation='relu'))
-    model.add(layers.Dense(64, activation='relu'))
-    model.add(layers.Dense(64, activation='relu'))
-    model.add(layers.Dense(64, activation='relu'))
     model.add(layers.Dense(1))
     model.compile(optimizer='rmsprop', loss='mse', metrics=['mae'])
     return model # 함수로 모델을 만들 때 반드시 들어가야하는 모델 리턴!
@@ -59,7 +52,7 @@ from sklearn.model_selection import KFold, cross_val_score # c_v_s 점수내는�
 model = KerasRegressor(build_fn=build_model, epochs=10, # 이 모델은 회귀모델이다.
                         batch_size=1, verbose=1) # build_fn:어떤모델을 쓸거냐. 위에 만든 모델 쓰겠다.
 kfold = KFold(n_splits=5, shuffle=True, random_state=seed) # 5번 따로 작업이기 때문에 유지가 필요없으므로 shuffle, 난수 77번째꺼 씀. 지정안하면 정말 무작위가 됨
-results = cross_val_score(model, train_data, train_targets, cv=kfold) # model.fit과 비슷
+results = cross_val_score(model, train_data, train_targets, cv=kfold) # model.fit()
 
 import numpy as np 
 print(results)

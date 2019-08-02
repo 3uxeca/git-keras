@@ -33,13 +33,13 @@ print(X_test.shape)
 
 # 컨볼루션 신경망의 설정
 model = Sequential()
-model.add(Conv2D(32, kernel_size=(3,3), input_shape=(28, 28, 1), activation='relu'))
-model.add(Conv2D(64, (3, 3), activation='relu'))
+model.add(Conv2D(2, kernel_size=(3,3), input_shape=(28, 28, 1), activation='relu'))
+model.add(Conv2D(2, (3, 3), activation='relu'))
 model.add(MaxPooling2D(pool_size=2))
-model.add(Dropout(0.25))
+model.add(Dropout(0.1))
 model.add(Flatten())
-model.add(Dense(128, activation='relu'))
-model.add(Dropout(0.5))
+model.add(Dense(2, activation='relu'))
+model.add(Dropout(0.1))
 model.add(Dense(10, activation='softmax')) # CNN 분류모델에서는 마지막 activation은 분류모델이라는 것을 인식시켜주기 위해서 softmax여야한다. # 0~9까지 10개의 데이터를 보내줄게
 
 model.compile(loss='categorical_crossentropy', # 분류모델에선 loss='mse' 대신 이걸 쓴다!
@@ -51,7 +51,7 @@ early_stopping_callback = EarlyStopping(monitor='val_loss', patience=10)
 
 #모델의 실행
 history = model.fit(X_train, Y_train, validation_data=(X_test, Y_test),
-                     epochs=30, batch_size=200, verbose=1,
+                     epochs=30, batch_size=10, verbose=1,
                      callbacks=[early_stopping_callback])
 
 # 테스트 정확도 출력
